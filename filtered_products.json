@@ -1,0 +1,30 @@
+{
+    "timestamp": "2024-10-15T13:42:17.544858",
+    "filtered_products": [
+        {
+            "product_name": "Calvin Klein CK IN2U Her",
+            "category": "Apă de toaletă",
+            "price": 459,
+            "currency": "MDL",
+            "link": "https://makeup.md/product/977/",
+            "price_eur": 22.950000000000003
+        },
+        {
+            "product_name": "Elizabeth Arden Green Tea",
+            "category": "Apă de parfum",
+            "price": 221,
+            "currency": "MDL",
+            "link": "https://makeup.md/product/1801/",
+            "price_eur": 11.05
+        },
+        {
+            "product_name": "Montblanc Signature",
+            "category": "Apă de parfum",
+            "price": 377,
+            "currency": "MDL",
+            "link": "https://makeup.md/product/483523/",
+            "price_eur": 18.85
+        }
+    ],
+    "total_price_mdl": 1057
+}

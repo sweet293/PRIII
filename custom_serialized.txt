@@ -1,0 +1,215 @@
+product_name = "Valmont Storie Veneziane Gaggia Medio I"
+category = "Parfum"
+price = 6819
+currency = "MDL"
+link = "https://makeup.md/product/795029/"
+
+product_name = "Le Couvent Des Minimes Ilhabela"
+category = "Parfum"
+price = 1737
+currency = "MDL"
+link = "https://makeup.md/product/830261/"
+
+product_name = "Valmont Collezione Privata Just Bloom"
+category = "Apă de Parfum"
+price = 3481
+currency = "MDL"
+link = "https://makeup.md/product/795071/"
+
+product_name = "Lattafa Perfumes Niche Emarati Zikra"
+category = "Apă de Parfum"
+price = 2026
+currency = "MDL"
+link = "https://makeup.md/product/838359/"
+
+product_name = "Sana Jardin Jaipur Chant No.8"
+category = "Eau de Parfum"
+price = 1753
+currency = "MDL"
+link = "https://makeup.md/product/711812/"
+
+product_name = "Sentier Memoire du Temps"
+category = "Apă de Parfum"
+price = 1502
+currency = "MDL"
+link = "https://makeup.md/product/836418/"
+
+product_name = "Calvin Klein Euphoria"
+category = "Apă de parfum"
+price = 694
+currency = "MDL"
+link = "https://makeup.md/product/897/"
+
+product_name = "Afnan Perfumes 9 PM"
+category = "Apă de parfum"
+price = 609
+currency = "MDL"
+link = "https://makeup.md/product/592595/"
+
+product_name = "Lanvin Eclat D`Arpege"
+category = "Apă de parfum"
+price = 532
+currency = "MDL"
+link = "https://makeup.md/product/3173/"
+
+product_name = "Moschino Funny"
+category = "Apă de toaletă"
+price = 898
+currency = "MDL"
+link = "https://makeup.md/product/3510/"
+
+product_name = "Tiziana Terenzi Kirke"
+category = "Parfum"
+price = 2890
+currency = "MDL"
+link = "https://makeup.md/product/354113/"
+
+product_name = "Versace Bright Crystal"
+category = "Apă de toaletă"
+price = 1178
+currency = "MDL"
+link = "https://makeup.md/product/4146/"
+
+product_name = "Calvin Klein CK IN2U Her"
+category = "Apă de toaletă"
+price = 459
+currency = "MDL"
+link = "https://makeup.md/product/977/"
+
+product_name = "Chloé Nomade"
+category = "Apă de parfum"
+price = 2036
+currency = "MDL"
+link = "https://makeup.md/product/380037/"
+
+product_name = "Lacoste Lacoste Pour Femme"
+category = "Apă de parfum"
+price = 962
+currency = "MDL"
+link = "https://makeup.md/product/3022/"
+
+product_name = "Chloé"
+category = "Apă de parfum"
+price = 1167
+currency = "MDL"
+link = "https://makeup.md/product/9695/"
+
+product_name = "Yves Saint Laurent Black Opium"
+category = "Apă de parfum"
+price = 1717
+currency = "MDL"
+link = "https://makeup.md/product/127021/"
+
+product_name = "Lancome La Vie Est Belle"
+category = "Apă de parfum"
+price = 1664
+currency = "MDL"
+link = "https://makeup.md/product/33333/"
+
+product_name = "Burberry Her"
+category = "Apă de parfum"
+price = 1203
+currency = "MDL"
+link = "https://makeup.md/product/410030/"
+
+product_name = "BOSS Femme"
+category = "Apă de parfum"
+price = 588
+currency = "MDL"
+link = "https://makeup.md/product/2612/"
+
+product_name = "Dolce & Gabbana Light Blue"
+category = "Apă de toaletă"
+price = 1018
+currency = "MDL"
+link = "https://makeup.md/product/1647/"
+
+product_name = "Yves Saint Laurent Libre Eau de Parfum"
+category = "Apă de parfum"
+price = 1755
+currency = "MDL"
+link = "https://makeup.md/product/456484/"
+
+product_name = "Lattafa Perfumes Yara"
+category = "Eau de Parfum"
+price = 805
+currency = "MDL"
+link = "https://makeup.md/product/655914/"
+
+product_name = "Carolina Herrera Good Girl"
+category = "Apă de parfum"
+price = 1403
+currency = "MDL"
+link = "https://makeup.md/product/278025/"
+
+product_name = "Cerruti 1881 pour femme"
+category = "Apă de toaletă"
+price = 509
+currency = "MDL"
+link = "https://makeup.md/product/1138/"
+
+product_name = "Zadig & Voltaire This is Her"
+category = "Apă de parfum"
+price = 1490
+currency = "MDL"
+link = "https://makeup.md/product/307549/"
+
+product_name = "Yves Saint Laurent Libre Intense"
+category = "Apă de parfum"
+price = 1935
+currency = "MDL"
+link = "https://makeup.md/product/490530/"
+
+product_name = "Elizabeth Arden Green Tea"
+category = "Apă de parfum"
+price = 221
+currency = "MDL"
+link = "https://makeup.md/product/1801/"
+
+product_name = "Calvin Klein CK One"
+category = "Apă de toaletă"
+price = 524
+currency = "MDL"
+link = "https://makeup.md/product/13362/"
+
+product_name = "Al Haramain Amber Oud Gold Edition"
+category = "Apă de parfum"
+price = 1359
+currency = "MDL"
+link = "https://makeup.md/product/550318/"
+
+product_name = "Montblanc Signature"
+category = "Apă de parfum"
+price = 377
+currency = "MDL"
+link = "https://makeup.md/product/483523/"
+
+product_name = "Chanel Coco Mademoiselle"
+category = "Apă de parfum"
+price = 2161
+currency = "MDL"
+link = "https://makeup.md/product/1190/"
+
+product_name = "Moschino I Love Love"
+category = "Apă de toaletă"
+price = 898
+currency = "MDL"
+link = "https://makeup.md/product/3474/"
+
+product_name = "BOSS The Scent For Her"
+category = "Apă de parfum"
+price = 1115
+currency = "MDL"
+link = "https://makeup.md/product/280553/"
+
+product_name = "Lattafa Perfumes Asad"
+category = "Apă de parfum"
+price = 789
+currency = "MDL"
+link = "https://makeup.md/product/641613/"
+
+product_name = "Giorgio Armani Acqua di Gioia"
+category = "Apă de parfum"
+price = 1483
+currency = "MDL"
+link = "https://makeup.md/product/15199/"

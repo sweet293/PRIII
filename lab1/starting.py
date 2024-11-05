@@ -81,8 +81,8 @@ for container in product_containers:
             f"Missing or invalid data for {product_name}. Title: '{product_name}', Link: '{product_link}', Price: '{current_price}'")
 
 # Write the products to a JSON file, overwriting the existing file
-with open('products.json', 'w', encoding='utf-8') as f:
-    json.dump(products, f, ensure_ascii=False, indent=4)
+#with open('products.json', 'w', encoding='utf-8') as f:
+    #json.dump(products, f, ensure_ascii=False, indent=4)
 
 print("Product information has been written to products.json.")
 

@@ -13,7 +13,6 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
         # Connect to the server
         ssock.connect((host, port))
 
-        # Create an HTTP GET request
         request = f"GET /product/795029/ HTTP/1.1\r\nHost: {host}\r\nConnection: close\r\n\r\n"
 
         # Send the request

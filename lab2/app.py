@@ -8,7 +8,7 @@ import os
 app = Flask(__name__)
 
 # Database configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://your_username:your_password@localhost/your_database_name'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgrespassword@localhost/mydatabase'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Upload folder configuration
@@ -51,6 +51,8 @@ product_schema = ProductSchema()
 products_schema = ProductSchema(many=True)
 
 # File upload route
+import json
+
 @app.route('/upload', methods=['POST'])
 def upload_file():
     if 'file' not in request.files:
@@ -65,18 +67,23 @@ def upload_file():
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
         file.save(file_path)
 
-        # Create a new product with the file path
-        product_name = request.form['product_name']
-        category = request.form['category']
-        price = request.form['price']
-        currency = request.form['currency']
-        link = request.form['link']
+        with open(file_path, 'r') as f:
+            data = json.load(f)
 
-        new_product = Product(product_name, category, price, currency, link, file_path)
-        db.session.add(new_product)
+        # Iterate over the product data and create new products
+        for product_data in data:
+            product_name = product_data['product_name']
+            category = product_data['category']
+            price = product_data['price']
+            currency = product_data['currency']
+            link = product_data['link']
+
+            new_product = Product(product_name, category, price, currency, link, file_path)
+            db.session.add(new_product)
+
         db.session.commit()
 
-        return product_schema.jsonify(new_product), 201
+        return jsonify({'message': 'Products created successfully'}), 201
 
 # Create a Product
 @app.route('/products', methods=['POST'])
@@ -107,6 +114,7 @@ def get_products():
     page = request.args.get('page', default=1, type=int)
     per_page = request.args.get('per_page', default=10, type=int)
 
+    #Starts a query to fetch Product records from the database.
     query = Product.query
 
     if category:

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Chat Client</title>
+</head>
+<body>
+    <h2>WebSocket Chat Client</h2>
+    <input type="text" id="username" placeholder="Enter your username">
+    <button onclick="joinChat()">Join Chat</button>
+    <div id="chat">
+        <ul id="messages"></ul>
+    </div>
+    <input type="text" id="message" placeholder="Enter message">
+    <button onclick="sendMessage()">Send Message</button>
+    <button onclick="leaveChat()">Leave Chat</button>
+
+    <script>
+        let websocket;
+        let username;
+
+        function joinChat() {
+            username = document.getElementById("username").value;
+            websocket = new WebSocket("ws://localhost:5001");
+
+            websocket.onopen = () => {
+                websocket.send("join_room:" + username);
+            };
+
+            websocket.onmessage = (event) => {
+                const messages = document.getElementById("messages");
+                const message = document.createElement("li");
+                message.textContent = event.data;
+                messages.appendChild(message);
+            };
+
+            websocket.onclose = () => {
+                const messages = document.getElementById("messages");
+                const message = document.createElement("li");
+                message.textContent = "Disconnected from the server.";
+                messages.appendChild(message);
+            };
+        }
+
+        function sendMessage() {
+            const messageInput = document.getElementById("message");
+            const chatMessage = "send_msg:" + messageInput.value;
+            websocket.send(chatMessage);
+            messageInput.value = "";
+        }
+
+        function leaveChat() {
+            websocket.send("leave_room");
+            websocket.close();
+        }
+    </script>
+</body>
+</html>

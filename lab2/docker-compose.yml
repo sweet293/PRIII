@@ -1,8 +1,7 @@
-version: '3.8'
 
 services:
   postgres:
-    image: postgres:latest
+    image: postgres:alpine
     container_name: my_postgres_db
     environment:
       POSTGRES_USER: postgres

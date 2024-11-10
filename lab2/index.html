@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat Room</title>
+    <style>
+        #messages {
+            height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+        .message {
+            margin-bottom: 5px;
+            padding: 5px;
+            border-radius: 4px;
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-area">
+        <input type="text" id="username" placeholder="Enter username">
+        <button onclick="joinChat()">Join Chat</button>
+    </div>
+
+    <div id="chat-area" style="display: none;">
+        <div id="messages"></div>
+        <input type="text" id="message" placeholder="Type a message">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        let ws;
+
+        function joinChat() {
+            const username = document.getElementById('username').value;
+            if (!username) {
+                alert('Please enter a username');
+                return;
+            }
+
+            // Connect to WebSocket server on port 8765
+            ws = new WebSocket('ws://localhost:8765');
+
+            ws.onopen = () => {
+                ws.send('join_room:' + username);
+                document.getElementById('login-area').style.display = 'none';
+                document.getElementById('chat-area').style.display = 'block';
+            };
+
+            ws.onmessage = (event) => {
+                const messages = document.getElementById('messages');
+                messages.innerHTML += '<div class="message">' + event.data + '</div>';
+                messages.scrollTop = messages.scrollHeight;
+            };
+
+            ws.onclose = () => {
+                alert('Connection closed');
+                document.getElementById('login-area').style.display = 'block';
+                document.getElementById('chat-area').style.display = 'none';
+            };
+        }
+
+        function sendMessage() {
+            const messageInput = document.getElementById('message');
+            const message = messageInput.value;
+            if (message) {
+                ws.send('send_msg:' + message);
+                messageInput.value = '';
+            }
+        }
+
+        // Allow sending message with Enter key
+        document.getElementById('message').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,7 +1,13 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, Blueprint, jsonify, send_from_directory, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
-from datetime import datetime
+from flask_socketio import SocketIO, join_room, leave_room, send, emit
+from collections import defaultdict
+import websockets
+import asyncio
+import json
+import threading
+
 import os
 
 # Init app
@@ -50,8 +56,6 @@ class ProductSchema(ma.Schema):
 product_schema = ProductSchema()
 products_schema = ProductSchema(many=True)
 
-# File upload route
-import json
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
@@ -181,9 +185,73 @@ def delete_product(id):
 
     return jsonify({"message": "Product deleted successfully"})
 
+#-----------------
 
-# Run Server
-if __name__ == '__main__':
+connected_users = {}
+
+@app.route('/')
+def serve_client():
+    return send_from_directory('.', 'index.html')  # Serve the HTML file
+
+
+async def chat_handler(websocket, path):
+    username = None
+    try:
+        while True:
+            message = await websocket.recv()
+            if message.startswith("join_room:"):
+                username = message[len("join_room:"):].strip()
+                connected_users[username] = websocket
+                print(f"{username} has joined the chat.")
+                for user, conn in connected_users.items():
+                    if user != username:
+                        await conn.send(f"{username} has joined the chat.")
+                await websocket.send(f"Welcome {username}!")
+                break
+
+        async for message in websocket:
+            if message == "leave_room":
+                connected_users.pop(username, None)
+                for user, conn in connected_users.items():
+                    await conn.send(f"{username} has left the chat.")
+                break
+            elif message.startswith("send_msg:"):
+                chat_message = message[len("send_msg:"):].strip()
+                for user, conn in connected_users.items():
+                    if user != username:
+                        await conn.send(f"{username}: {chat_message}")
+                await websocket.send(f"{username}: {chat_message}")
+
+    except websockets.ConnectionClosed:
+        if username:
+            connected_users.pop(username, None)
+            print(f"{username} has disconnected.")
+
+
+
+
+
+# Function to start the WebSocket server on port 8765
+async def start_websocket_server():
+    server = await websockets.serve(chat_handler, "localhost", 8765)
+    print("WebSocket server started on ws://localhost:8765")
+    await server.wait_closed()
+
+# Function to start the Flask HTTP server on port 5000
+def run_flask():
+    app.run(debug=True, port=5000, use_reloader=False)
+
+# Main function to run both servers
+async def main():
+    # Create database tables
     with app.app_context():
-        db.create_all()  # Create database tables
-    app.run(debug=True)
+        db.create_all()
+
+    await asyncio.gather(
+        start_websocket_server(),
+        asyncio.to_thread(run_flask)  # Running Flask app in a separate thread
+    )
+
+
+if __name__ == "__main__":
+    asyncio.run(main())

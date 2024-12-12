@@ -12,17 +12,29 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
-      - postgres_network
+      - mynet
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
       timeout: 5s
       retries: 5
+  app:
+    container_name: app
+    build:
+      context: .
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "5000:5000"
+      - "8765:8765"
+    networks:
+      - mynet
 
 volumes:
   postgres_data:
 
 networks:
-  postgres_network:
+  mynet:
     driver: bridge

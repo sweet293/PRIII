@@ -41,7 +41,7 @@
             }
 
             // Connect to WebSocket server on port 8765
-            ws = new WebSocket('ws://localhost:8765');
+            ws = new WebSocket('ws://app:8765');
 
             ws.onopen = () => {
                 ws.send('join_room:' + username);

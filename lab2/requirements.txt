@@ -1,0 +1,10 @@
+Flask==2.1.1
+Flask-SQLAlchemy==2.5.1
+Flask-Marshmallow==0.14.0
+Flask-SocketIO==5.1.1
+marshmallow-sqlalchemy==0.26.1
+SQLAlchemy==1.4.47
+werkzeug==2.0.3
+websockets==10.3
+asyncio==3.4.3
+psycopg2-binary==2.9.6

@@ -14,7 +14,7 @@ import os
 app = Flask(__name__)
 
 # Database configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgrespassword@localhost/mydatabase'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgrespassword@postgres/mydatabase'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Upload folder configuration
@@ -109,7 +109,6 @@ def add_product():
         return jsonify({"error": str(e)}), 400
 
 
-# Get All Products (with Pagination)
 @app.route('/products', methods=['GET'])
 def get_products():
     # Handle query parameters
@@ -239,7 +238,9 @@ async def start_websocket_server():
 
 # Function to start the Flask HTTP server on port 5000
 def run_flask():
-    app.run(debug=True, port=5000, use_reloader=False)
+    # app.run(debug=True, port=5000, use_reloader=False)
+    app.run(debug=True, host='0.0.0.0', port=5000, use_reloader=False)
+
 
 # Main function to run both servers
 async def main():
